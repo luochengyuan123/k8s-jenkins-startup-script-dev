@@ -1,0 +1,754 @@
+{
+  "services": [
+    {
+      "name": "eureka",
+      "port": "8761",
+      "desc": "注册中心",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms512M -Xmx512M -Xss256k -Xmn256m -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=512M",
+      "bootArgs": "--eureka.server.enable-self-preservation=false --eureka.server.eviction-interval-timer-in-ms=5000 --eureka.instance.lease-expiration-duration-in-seconds=40 --eureka.client.service-url.defaultZone=http://eureka:8761/eureka/"
+    },
+    {
+      "name": "config-server",
+      "port": "8888",
+      "desc": "配置中心",
+      "webui": "disable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms512M -Xmx512M -Xss256k -Xmn256m -XX:MetaspaceSize=128M -XX:MaxMetaspaceSize=512M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.server.git.uri=http://10.123.107.106/payeco/config-file-dev.git --spring.cloud.config.server.git.username=xxx --spring.cloud.config.server.git.password=xxx --spring.cloud.config.server.git.basedir=/opt/app/config"
+    },
+    {
+      "name": "receipt-alipay-api-app",
+      "port": "8145",
+      "desc": "支付宝收单应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "merchant-wallet-app",
+      "port": "8093",
+      "desc": "钱包应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "open-merch-accs-app",
+      "port": "8085",
+      "desc": "开放商户服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "wx-consumer-wallet-app",
+      "port": "8015",
+      "desc": "万科小程序",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "wx-consumer-wallet-job",
+      "port": "8105",
+      "desc": "万科小程序后台批次任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "basic-service",
+      "port": "8087",
+      "desc": "基础服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "basic-monitor-message-service",
+      "port": "8091",
+      "desc": "IVR语音服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-merchant-service",
+      "port": "8088",
+      "desc": "商户服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-customer-service",
+      "port": "8084",
+      "desc": "客户服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "acct-accounting-service",
+      "port": "8082",
+      "desc": "会计服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "acct-account-service",
+      "port": "8081",
+      "desc": "账务服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "settle-settlement-service",
+      "port": "8102",
+      "desc": "结算服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "promotion-service",
+      "port": "8098",
+      "desc": "服务营销",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "oms-platform",
+      "port": "8086",
+      "desc": "运营后台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "risk-monitor-statis-job",
+      "port": "8083",
+      "desc": "合规监控定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "sms-http-gateway",
+      "port": "8095",
+      "desc": "短信网关",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "risk-investigation-job",
+      "port": "8094",
+      "desc": "广东公安经侦快查定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-thirdpartypay-service",
+      "port": "8109",
+      "desc": "第三方支付通道服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "risk-telefraud-service",
+      "port": "8099",
+      "desc": "电信诈骗",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "order-trail-service",
+      "port": "8100",
+      "desc": "订单追踪服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "promotion-service-job",
+      "port": "8115",
+      "desc": "服务营销定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "unionpay-provisions-service",
+      "port": "8016",
+      "desc": "银联备付金系统",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "eft-merchant-app",
+      "port": "8106",
+      "desc": "易付通",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "wx-pay-app",
+      "port": "8133",
+      "desc": "微信支付应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "wx-k11-wallet-app",
+      "port": "8117",
+      "desc": "K11钱包应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-job",
+      "port": "8129",
+      "desc": "通道定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "wx-k11-wallet-job",
+      "port": "8118",
+      "desc": "K11定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "oms-merchant-platform",
+      "port": "8111",
+      "desc": "商户后台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-upop-auth",
+      "port": "8121",
+      "desc": "UPOP鉴权",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-unionpay-quanqudao-directpay-service",
+      "port": "8128",
+      "desc": "银联产品订购通道",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-auth-service",
+      "port": "8103",
+      "desc": "客户认证服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "settle-clearing-service",
+      "port": "8114",
+      "desc": "清算服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/usr/reckon",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "pay-route-service",
+      "port": "8112",
+      "desc": "支付路由",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "product-service",
+      "port": "8089",
+      "desc": "产品服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-service-platform",
+      "port": "8090",
+      "desc": "客户服务平台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "demo-pay2-app",
+      "port": "8092",
+      "desc": "演示-支付应用（这个项目不需要上生产）",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "shenzhengw",
+      "port": "8096",
+      "desc": "深圳银联网关（旧项目新增网关）",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cmdb",
+      "port": "8097",
+      "desc": "cmdb（这个项目不需要上生产）",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "ops-platform",
+      "port": "8101",
+      "desc": "运维平台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-tyc-service",
+      "port": "8104",
+      "desc": "天眼查",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "settle-cas-channel-service",
+      "port": "8107",
+      "desc": "中行跨境",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "merchant-http-gateway",
+      "port": "8108",
+      "desc": "商户网关",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "cust-pv-acquirers-app",
+      "port": "8110",
+      "desc": "商户pv外卡收单应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "marketing-promotion-service",
+      "port": "8113",
+      "desc": "市场营销服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "risk-management-service",
+      "port": "8116",
+      "desc": "风控服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-upop-nopass",
+      "port": "8119",
+      "desc": "通道-UPOP-UPOP无磁无密",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-upop",
+      "port": "8120",
+      "desc": "通道-UPOP-上海UPOP",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-szunpay",
+      "port": "8122",
+      "desc": "通道-深银联-深银联有密支付",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-szunpay-nopass",
+      "port": "8123",
+      "desc": "通道-深银联-深银联无密支付",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-szunpay-auth",
+      "port": "8124",
+      "desc": "通道-深银联-深圳银联鉴权",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-shcup-order",
+      "port": "8125",
+      "desc": "通道-上海银联订购",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-shcup-order-nopass",
+      "port": "8126",
+      "desc": "通道-上海银联订购无密",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-notify-app",
+      "port": "8127",
+      "desc": "通道-异步通知应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "pay-gateway-service",
+      "port": "8130",
+      "desc": "支付基础网关(dna拆分)",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-unionpay-qrcodepay-service",
+      "port": "8132",
+      "desc": "通道-银联二维码支付（又名云闪付）",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "risk-platform",
+      "port": "8134",
+      "desc": "风控运营后台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-quickpay-api-app",
+      "port": "8135",
+      "desc": "快捷收单应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-bea-service",
+      "port": "8136",
+      "desc": "对接东亚银行三类账户平台接口",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "eft-merchant-job",
+      "port": "8137",
+      "desc": "易付通定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-wx-app",
+      "port": "8138",
+      "desc": "收单应用-微信支付",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-unionpay-international-upop-service",
+      "port": "8139",
+      "desc": "通道-银联国际upop通道",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "api-gateway",
+      "port": "8140",
+      "desc": "B端网关服务",
+      "webui": "enable",
+      "uriPath": "gateway",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-wx-api-app",
+      "port": "8141",
+      "desc": "收单应用-微信api",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-unify-api-app",
+      "port": "8142",
+      "desc": "收单应用-统一api",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-szunionpay-withhold-service",
+      "port": "8143",
+      "desc": "通道-深圳银联代扣服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "channel-unionpay-quickpay-token-service",
+      "port": "8144",
+      "desc": "通道-银联快捷token支付服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-cloudflashpay-api-app",
+      "port": "8146",
+      "desc": "收单应用-云闪付api",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-job",
+      "port": "8149",
+      "desc": "收单应用-定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "newretail-merchant-platform",
+      "port": "8147",
+      "desc": "新零售商户自助平台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "miniapp-t3-job",
+      "port": "8157",
+      "desc": "t3有机茶小程序定时任务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "miniapp-t3-app",
+      "port": "8151",
+      "desc": "3有机茶小程序应用",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "receipt-web-app",
+      "port": "8156",
+      "desc": "收单应用-提供给web的接口服务",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    },
+    {
+      "name": "t3-merchant-platform",
+      "port": "8158",
+      "desc": "t3商户后台",
+      "webui": "enable",
+      "uriPath": "",
+      "dataVolumePath": "/opt/data",
+      "jvmArgs": "-Xms128M -Xmx256M -Xss256k -Xmn128m -XX:MetaspaceSize=32M -XX:MaxMetaspaceSize=256M",
+      "bootArgs": "--eureka.client.service-url.defaultZone=http://eureka:8761/eureka/ --spring.cloud.config.enabled=true --spring.cloud.config.discovery.enabled=true"
+    }
+  ]
+}
